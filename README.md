@@ -33,7 +33,7 @@
 </br>
 </br>
 
-## 👨‍💻  Actividades realizadas:
+## 👨‍💻  👨‍💻 Actividades realizadas:
 
 </br>
 

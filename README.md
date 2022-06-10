@@ -17,6 +17,8 @@
 
 # Proyecto en la Red de Aurora
 
+![plant](https://user-images.githubusercontent.com/37389982/173133705-c5053f78-c126-418b-bcec-c0a8a4214aaf.png)
+
 
 ## Titulo del Proyecto:
 - Plant Tree

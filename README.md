@@ -25,10 +25,11 @@
 
 
 ## Descripción :
-- Nuestro objetivo es preservar los arboles, y aprender solidity es un contrato simple tipo crud para preservar los arboles
+- Contrato para sensibilizar a la poblacion y registrar la cantidad de arboles que se siembran en su localidad
 
 ## Objetivos:
-- sensivilar a la poblacion 
+- Crear un registro publico para ver cuantos arboles se siembran
+- Aprender Solidity en la red Aurora 
 
 </br>
 </br>

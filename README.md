@@ -108,9 +108,19 @@ nota2: registerTree() necesita la altura del arbol y su direccion
 clic 
 ![image](https://user-images.githubusercontent.com/37389982/173144627-9c0b2c4d-3daf-45b9-a924-b0340ece145c.png)
 
+![image](https://user-images.githubusercontent.com/37389982/173148740-7815af11-b046-4d93-91b3-c8a4ecf7362e.png)
 
+### copiamos el hash Unico
 
 ### Plantar()
+
+pegamos el hash unico
+![image](https://user-images.githubusercontent.com/37389982/173149013-1a993c97-0add-45aa-83fe-689a340c1c6a.png)
+
+
+### obtener los datos del arbol
+necesitas el hash unico
+![image](https://user-images.githubusercontent.com/37389982/173149406-1512e1bf-a89f-4918-8e9f-abcbcd096860.png)
 
 
 </br>

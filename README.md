@@ -95,7 +95,13 @@ ir a https://thegraph.com/hosted-service/subgraph/noemk2/simi
 
 ## consultar entidades
 
+
+
+## Work Flow
+![mine](https://user-images.githubusercontent.com/37389982/173131594-596f66a7-4c26-482c-8d8f-2d758d500c7f.png)
+
 ```
+
 {
   products(first: 5) {
     id

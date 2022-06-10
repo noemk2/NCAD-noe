@@ -41,41 +41,76 @@
 - Contrato Principal: `0xdbfb031C8a0607796549F058afE7ea80b526Ae2B` 
     - url : `./contracts/1_Contract.sol`
 
-## API del contrato:
+## Deploy en Remix https://remix.ethereum.org/ :
 
 </br>
 
-### Inicializar contrato:
-
-```sh
-    near call productos.mue.testnet new '{"owner_id": "mue.testnet"}' --accountId $YOUR_ACCOUNT.testnet
-```
-
-### Obtener producto
-```sh
-    near view productos.mue.testnet get_products '{"address":"noemk3.testnet"}'
-    near view productos.mue.testnet get_products '{"address":"nie.testnet"}'
-    near view productos.mue.testnet  get_products '{"address":"mue.testnet"}'
-```
-
-### Guardar producto
-
-```sh
-  near call productos.mue.testnet set_products '{"address": "noemk3.testnet", "name": "phone 5", "price": 520, "stock": 50,"cid": "QmUWe3CW6NoFimZ34xWCKdzrveCD5zqExTAUeFzJ6nbDYp" }' --accountId mue.testnet
+### Pegar contrato (1_Contract.sol) Remix:
+![image](https://user-images.githubusercontent.com/37389982/173138833-27b02ecf-7727-44ad-921e-c2490a5193ea.png)
 
 
-near call productos.mue.testnet set_products '{"address": "mue.testnet", "name": "phone 1", "price": 10, "stock": 10,"cid": "Qmb7VQPf7KFnXSQed5LWWQoCzmqvsQQoaEjd98wGweppvE" }' --accountId mue.testnet
+### Compilar en Remix
+![image](https://user-images.githubusercontent.com/37389982/173139096-9e986fb5-073d-445c-b0cb-c27e4c6352d4.png)
 
 
-near call productos.mue.testnet set_products '{"address": "nie.testnet", "name": "phone 4", "price": 40, "stock": 40,"cid": "Qmb7VQPf7KFnXSQed5LWWQoCzmqvsQQoaEjd98wGweppvE" }' --accountId mue.testnet
+### Ir Deploy contrato
 
-```
+![image](https://user-images.githubusercontent.com/37389982/173139256-e80621b2-d6fa-43ca-9ee2-03f14e7e9ced.png)
 
-### Eliminar producto
 
-```sh
-near call productos.mue.testnet delete_products '{"address": "noemk3.testnet"}' --accountId mue.testnet
-```
+### Seleccionar Injective Web3
+
+![image](https://user-images.git![Screenshot from 2022-06-10 14-48-45](https://user-images.githubusercontent.com/37389982/173140239-a25d77fa-ff49-402b-a23f-bebb77febc6c.png)
+
+### Conectar
+hubusercontent.com/37389982/173139444-06b9b25d-a237-4cf0-90b2-aa2570632c89.png)
+
+### Aceptar
+![Screenshot from 2022-06-10 14-49-43](https://user-images.githubusercontent.com/37389982/173140268-756317a1-a710-4cbe-bd6a-ddfaf7289567.png)
+
+
+### Deploy
+![image](https://user-images.githubusercontent.com/37389982/173140651-c94a62e0-b8e4-4115-8822-fedffc5185de.png)
+
+
+#### Confim
+
+![Screenshot from 2022-06-10 14-53-27](https://user-images.githubusercontent.com/37389982/173140937-947cf5e9-17ba-4bba-ad32-d0077390af70.png)
+
+
+## Observaciones:
+- Asegurar de estar en la Red de Auorora Testnet
+- Asegurar de tenear ETH en testnet de Aurora
+
+
+
+## API del contrato:
+
+### desplegar metodos en Remix
+![image](https://user-images.githubusercontent.com/37389982/173141339-8657a86f-7648-4e52-9037-97fb9c8b90be.png)
+
+### Ejecutar el metodo giveRight(address _volunteer)
+ nota:  _volunteer es un billetera de un Voluntario para plantar arboles
+ nota2: el firmante debe ser el jardinero
+ 
+  ![image](https://user-images.githubusercontent.com/37389982/173141811-413c6c03-fe78-497a-8d87-47a842e90680.png)
+  
+ ### confirmamos ... 
+ 
+ 
+ ### Registar un arbol 
+nota: este metodo puede ejecutarlo el voluntario asignado
+nota2: registerTree() necesita la altura del arbol y su direccion
+
+![image](https://user-images.githubusercontent.com/37389982/173142687-d4a4ddff-8128-417d-aa71-d3557873f19f.png)
+
+### Obtener el hashTreeo
+clic 
+![image](https://user-images.githubusercontent.com/37389982/173144627-9c0b2c4d-3daf-45b9-a924-b0340ece145c.png)
+
+
+
+### Plantar()
 
 
 </br>

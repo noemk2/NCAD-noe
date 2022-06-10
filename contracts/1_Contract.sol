@@ -1,22 +1,76 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
+/*
+ideas implementar: 
+
+MEJORAR EL MEDIO AMBIENTE (es una cadena de varios integrantes)
+- crear una ruta arboles semprados -- crear un crud -- crar un fronted - usar thegraph
+        ayudaria a saber cuanto se ayuda a cuidar el planeta
+
+*/
+    /*
+    interfaces
+    methods 
+    events 
+    */
+
+
 
 import "hardhat/console.sol";
 
-contract Greeter {
-    string private greeting;
+contract PlantTree {
 
-    constructor(string memory _greeting) {
-        console.log("Deploying a Greeter with greeting:", _greeting);
-        greeting = _greeting;
+    // interfaces
+    struct Tree {
+        uint id;
+        uint height;
+        uint age;
+        uint health;
+        uint water;
+        uint food;
+        uint energy;
+        uint waste;
+        uint pollution;
+        uint money;
+        uint happiness;
+        uint happiness_level;
+        uint happiness_level_max;
+}
+
+// roles
+
+    // volunteers aniway
+    struct Volunteer {
+        uint id;
+        uint money;
+        uint water;
+        uint food;
+        uint energy;
+        uint waste;
+        uint pollution;
+        uint happiness;
+        uint happiness_level;
+        uint happiness_level_max;
     }
 
-    function greet() public view returns (string memory) {
-        return greeting;
+    //unique gardener
+    struct gardener {
+        uint id;
+        uint money;
+        uint water;
+        uint food;
+        uint energy;
+        uint waste;
+        uint pollution;
+        uint happiness;
+        uint happiness_level;
+        uint happiness_level_max;
     }
 
-    function setGreeting(string memory _greeting) public {
-        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-        greeting = _greeting;
-    }
+
+
+
+
+
+
 }

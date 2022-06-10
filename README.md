@@ -80,6 +80,15 @@ near call productos.mue.testnet delete_products '{"address": "noemk3.testnet"}' 
 </br>
 
 
+## Work Flow
+</br>
+
+<img src="https://user-images.githubusercontent.com/37389982/173131594-596f66a7-4c26-482c-8d8f-2d758d500c7f.png" alt="drawing" style="width:70%;"/>
+
+
+<!-- </img> -->
+
+
 ## Uso del nodo de thegraph en near testnet
 - https://thegraph.com/hosted-service/subgraph/noemk2/simi (nodo live en thegraph)
 - ./Simi/src/mapping.ts (implementacion del subgraph) 
@@ -97,8 +106,6 @@ ir a https://thegraph.com/hosted-service/subgraph/noemk2/simi
 
 
 
-## Work Flow
-![mine](https://user-images.githubusercontent.com/37389982/173131594-596f66a7-4c26-482c-8d8f-2d758d500c7f.png)
 
 ```
 

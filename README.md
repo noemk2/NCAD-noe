@@ -33,6 +33,10 @@
 </br>
 </br>
 
+## video loom
+
+https://www.loom.com/share/2f34e9285947482eb0dca0a6a720af80
+
 ## 👨‍💻 Actividades realizadas :
 
 </br>

@@ -1,139 +1,67 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
-/*
-ideas implementar: 
-
-MEJORAR EL MEDIO AMBIENTE (es una cadena de varios integrantes)
-- crear una ruta arboles semprados -- crear un crud -- crar un fronted - usar thegraph
-        ayudaria a saber cuanto se ayuda a cuidar el planeta
-
-*/
-    /*
-    interfaces
-    methods 
-    events 
-    */
-
-
 
 import "hardhat/console.sol";
 
 contract PlantTree {
-
-    // interfaces
     struct Tree {
-        uint id;
-        uint height;
-        uint age;
-        uint health;
-        uint water;
-        uint food;
-        uint energy;
-        uint waste;
-        uint pollution;
-        uint money;
-        uint happiness;
-        uint happiness_level;
-        uint happiness_level_max;
-}
+        uint256 plantingDate;
+        uint256 height;
+        string direction;
+    }
 
-// roles
 
-    // volunteers aniway
     struct Volunteer {
-        uint id;
-        uint money;
-        uint water;
-        uint food;
-        uint energy;
-        uint waste;
-        uint pollution;
-        uint happiness;
-        uint happiness_level;
-        uint happiness_level_max;
+        bool enabled;
+        uint256[] treesPlanted;
     }
 
-    //unique gardener
+
     address public gardener;
+
     mapping(address => Volunteer) public volunteers;
-    Tree[] public proposals;
+    mapping(uint256 => Tree) public trees;
 
-// methods 
+    uint256[] public treesPlanted;
 
-    constructor(bytes32[] memory proposalNames){
-        gardener = msg.sender;
-        volunteers[gardener].id= 1;
-
-        for (uint i = 0; i < proposalNames.length; i++) {
-            // 'Proposal({...})' creates a temporary
-            // Proposal object and 'proposals.push(...)'
-            // appends it to the end of 'proposals'.
-            proposals.push(Tree({
-                name: proposalNames[i],
-                voteCount: 0
-            }));
-        }
+    constructor(address _gardener) {
+        gardener = _gardener;
+        volunteers[gardener].enabled = true;
     }
 
-  function giveRightPlant(address voter) public {
-    require(
-      msg.sender == gardener,
-      "Only gardener can give right to plant."
-    );
-    require(
-      !volunteers[voter].voted,
-      "The voter already voted."
-    );
-    require(volunteers[voter].id == 0);
-    volunteers[voter].id = 1;
-  }
 
-  function delegate (address to) public {
-    Volunteer storage sender = volunteers[msg.sender];
-    require(!sender.voted, "You already voted.");
-    require(to != msg.sender, "Self-delegation is disallowed.");
-
-    while (volunteers[to].delegate != address(0)) {
-      to = volunteers[to].delegate;
-
-      // We found a loop in the delegation, not allowed.
-      require(to != msg.sender, "Found loop in delegation.");
+    function giveRightPlant(address _volunteer) public {
+        require(
+            msg.sender == gardener,
+            "Only gardener can give right to plant."
+        );
+        volunteers[_volunteer].enabled = true;
     }
-    sender.voted = true;
-  }
-
-  
-function plant(uint id, uint height, uint age, uint health, uint water, uint food, uint energy, uint waste, uint pollution, uint money, uint happiness, uint happiness_level, uint happiness_level_max) public {
-    require(
-      volunteers[msg.sender].id == 1,
-      "Only gardener can plant."
-    );
-    require(
-      volunteers[msg.sender].money >= money,
-      "Not enough money."
-    );
-    require(
-      volunteers[msg.sender].water >= water,
-      "Not enough water."
-    );
-    require(
-      volunteers[msg.sender].food >= food,
-      "Not enough food."
-    );
-}
 
 
-function getTotalPlantedTrees() public view returns (uint) {
-    uint total = 0;
-    for (uint i = 0; i < proposals.length; i++) {
-        total += proposals[i].voteCount;
+    function delegate(address to) public {
+        require(msg.sender == gardener, "Only gardener can delegate.");
+        msg.sender.transfer(to, msg.value);
     }
-    return total;
-}
+
+    // _tree posiblemente cambio
 
 
+    function plant(uint256 _tree) public {
+        require(
+            volunteers[msg.sender].enabled,
+            "You are not allowed to plant."
+        );
+        require(trees[_tree].height == 0, "Tree already planted.");
+        trees[_tree].plantingDate = block.timestamp;
+        trees[_tree].height = 1;
+        trees[_tree].direction = "up";
+        volunteers[msg.sender].treesPlanted.push(_tree);
+        treesPlanted.push(_tree);
+    }
 
 
-
-
+    function getTotalPlantedTrees() public view returns (uint) {
+        return treesPlanted.length;
+    }
 }

@@ -1,64 +1,109 @@
-//SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 contract PlantTree {
     struct Tree {
         uint256 plantingDate;
         uint256 height;
         string direction;
+        bool planted;
     }
 
 
     struct Volunteer {
-        bool enabled;
+        uint weight;
         uint256[] treesPlanted;
     }
 
 
+//  event FCalled(Tree _t);
+ event FCalled(Tree );
+ event FCalledVol(Volunteer );
+
     address public gardener;
+    uint256 hashTree;
+    uint initialNumber;
 
-    mapping(address => Volunteer) public volunteers;
-    mapping(uint256 => Tree) public trees;
+    mapping(address => Volunteer) volunteers;
+    mapping(uint256 => Tree) trees;
 
-    uint256[] public treesPlanted;
+    uint256[] treesPlanted;
 
-    constructor(address _gardener) {
-        gardener = _gardener;
-        volunteers[gardener].enabled = true;
+
+    constructor()  {
+        gardener = msg.sender;
+        volunteers[gardener].weight = 1;
     }
 
-
-    function giveRightPlant(address _volunteer) public {
+    function giveRight(address _volunteer) public {
         require(
             msg.sender == gardener,
-            "Only gardener can give right to plant."
+            "Only gardener can give right to plan trees."
         );
-        volunteers[_volunteer].enabled = true;
+        require(volunteers[_volunteer].weight == 0);
+        volunteers[_volunteer].weight = 1;
     }
 
 
-    function delegate(address to) public {
-        require(msg.sender == gardener, "Only gardener can delegate.");
-        msg.sender.transfer(to, msg.value);
-    }
+    function delegate(address _to, address _volunteer) public {
+       require( _to != _volunteer);
 
-    // _tree posiblemente cambio
-
-
-    function plant(uint256 _tree) public {
         require(
-            volunteers[msg.sender].enabled,
-            "You are not allowed to plant."
+            msg.sender == gardener,
+            "Only gardener can delegate."
         );
-        require(trees[_tree].height == 0, "Tree already planted.");
-        trees[_tree].plantingDate = block.timestamp;
-        trees[_tree].height = 1;
-        trees[_tree].direction = "up";
-        volunteers[msg.sender].treesPlanted.push(_tree);
-        treesPlanted.push(_tree);
+
+       require(volunteers[_volunteer].weight > 0);       
+
+        volunteers[_volunteer].weight = 0;
+        volunteers[_to].weight = 1;
+
     }
+
+    function registerTree(uint _height, string memory _direction) public returns (uint) {
+        require(
+            msg.sender == gardener,
+            "Only gardener can register trees."
+        );
+
+        uint timestamp = block.timestamp;
+        hashTree = uint(keccak256(abi.encodePacked(initialNumber++))) % timestamp;
+
+        Tree storage senderTree = trees[hashTree];
+        senderTree.height = _height;
+        senderTree.direction = _direction;
+
+        return hashTree;
+
+    }
+
+    function plant(uint _numberTree) public{
+        Tree storage senderTree = trees[_numberTree];
+        require(volunteers[msg.sender].weight != 0);
+        require(!senderTree.planted);
+
+        senderTree.planted = true;
+        senderTree.plantingDate = block.timestamp;
+
+        treesPlanted.push(_numberTree);
+    }
+
+    function getTree(uint _numberTree) public {
+        Tree memory a = trees[_numberTree];
+
+        // console.log(a.height);
+        emit FCalled(a);
+    }
+
+
+    // function getVolunteer(address _volunteer) public {
+    //     Volunteer memory b = volunteers[_volunteer];
+
+    //     // console.log(a.weight);
+    //     emit FCalledVol(b);
+    // }
 
 
     function getTotalPlantedTrees() public view returns (uint) {

@@ -38,7 +38,7 @@
 </br>
 
 ## Contrato Utilizado: 
-- Contrato Principal: `0x27eedAf79ddad4b6EB445868403Cdbc166Ce4b2D` 
+- Contrato Principal: `0xdbfb031C8a0607796549F058afE7ea80b526Ae2B` 
     - url : `./contracts/1_Contract.sol`
 
 ## API del contrato:
@@ -89,38 +89,3 @@ near call productos.mue.testnet delete_products '{"address": "noemk3.testnet"}' 
 
 
 <!-- </img> -->
-
-
-## Uso del nodo de thegraph en near testnet
-- https://thegraph.com/hosted-service/subgraph/noemk2/simi (nodo live en thegraph)
-- ./Simi/src/mapping.ts (implementacion del subgraph) 
-
-</br>
-
-## USO DEL NODO thegraph:
-
-</br>
-
-## ver las entidades registradas:
-ir a https://thegraph.com/hosted-service/subgraph/noemk2/simi
-
-## consultar entidades
-
-
-
-
-```
-
-{
-  products(first: 5) {
-    id
-    name
-    price
-    stock
-    cid
-    enabled
-  }
-}
-
-```
--- IMAGEN DE SUBGRAPH --
